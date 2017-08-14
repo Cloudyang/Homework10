@@ -1,16 +1,18 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Homework10", "Homework10\Homework10.csproj", "{C0BDF46C-DAB8-4501-AC6B-A045031F3A73}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Task", "Solution Task", "{E45E69C9-5CA5-4DDB-8FD5-FB6740471B7F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeFirstDB", "CodeFirstDB\CodeFirstDB.csproj", "{EF955C28-F3D1-4DE2-9A05-87253DFBCE3B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Task", "Solution Task", "{57DBAE6E-D250-496F-9905-313649EAFF9B}"
 	ProjectSection(SolutionItems) = preProject
-		..\Advanced9第十次homework.txt = ..\Advanced9第十次homework.txt
+		Advanced9第十次homework.txt = Advanced9第十次homework.txt
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeFirstDB", "CodeFirstDB\CodeFirstDB.csproj", "{EF955C28-F3D1-4DE2-9A05-87253DFBCE3B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common.ADOEF", "Common.ADOEF\Common.ADOEF.csproj", "{D6F25017-BA50-4B3A-993B-DE7FF371312A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -26,6 +28,10 @@ Global
 		{EF955C28-F3D1-4DE2-9A05-87253DFBCE3B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EF955C28-F3D1-4DE2-9A05-87253DFBCE3B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EF955C28-F3D1-4DE2-9A05-87253DFBCE3B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D6F25017-BA50-4B3A-993B-DE7FF371312A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6F25017-BA50-4B3A-993B-DE7FF371312A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6F25017-BA50-4B3A-993B-DE7FF371312A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6F25017-BA50-4B3A-993B-DE7FF371312A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

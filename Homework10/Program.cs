@@ -26,6 +26,7 @@ namespace Homework10
                     };
                     companySet.Add(company1);
                     homework10Context.SaveChanges();
+
                 }
                 #endregion
 
