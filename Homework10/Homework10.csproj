@@ -44,6 +44,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
@@ -67,6 +68,10 @@
     <ProjectReference Include="..\CodeFirstDB\CodeFirstDB.csproj">
       <Project>{ef955c28-f3d1-4de2-9a05-87253dfbce3b}</Project>
       <Name>CodeFirstDB</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Common.ADOEF\Common.ADOEF.csproj">
+      <Project>{d6f25017-ba50-4b3a-993b-de7ff371312a}</Project>
+      <Name>Common.ADOEF</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

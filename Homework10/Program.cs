@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,6 +7,8 @@ using System.Threading.Tasks;
 using CodeFirstDB;
 using System.Reflection;
 using System.Data.Entity;
+using ExpressionDemo.DBExtend;
+using System.Data.Objects;
 
 namespace Homework10
 {
@@ -15,6 +18,9 @@ namespace Homework10
         {
             using (Homework10Context homework10Context = new Homework10Context())
             {
+
+                homework10Context.Database.Log = c => Console.WriteLine(c);
+
                 var companySet = homework10Context.Company;
                 #region  增 在Comanpy对象中演示
                 {
@@ -52,6 +58,17 @@ namespace Homework10
                         homework10Context.SaveChanges();
                     }
                     #endregion
+                    #region 修改方法3 
+                    {
+                        var company1 = companySet.Where(c => c.Id == 2021).FirstOrDefault();
+                        if (company1 != null)
+                        {
+                            company1.Name = "测试修改2023";
+                            // homework10Context.Set<Company>().Attach(company1); 对DbSet内部数据集修改无需Attach方法
+                            homework10Context.SaveChanges();
+                        }
+                    }
+                    #endregion
                 }
                 #endregion
 
@@ -59,7 +76,7 @@ namespace Homework10
                 {
                     #region 删除方法1
                     {
-                        var company1 = companySet.Find(2005);
+                        var company1 = companySet.Find(2023);
                         if (company1 != null)
                         {
                             companySet.Remove(company1);
@@ -69,14 +86,28 @@ namespace Homework10
                     #endregion
                     #region 删除方法2 
                     {
-                        var company1 = companySet.Where(c=>c.Id==1006).FirstOrDefault();
+                        var company1 = companySet.Where(c => c.Id == 2024).FirstOrDefault();
                         if (company1 != null)
                         {
                             homework10Context.Entry(company1).State = EntityState.Deleted;
                             homework10Context.SaveChanges();
-                        }                       
+                        }
                     }
                     #endregion
+
+                    #region 删除方法3 
+                    {
+                        var company1 = companySet.Where(c => c.Id == 2025).FirstOrDefault();
+                        if (company1 != null)
+                        {
+                            homework10Context.Set<Company>().Attach(company1);
+                            homework10Context.Set<Company>().Remove(company1);
+                        }
+                         homework10Context.SaveChanges();
+                    }
+                    #endregion
+
+
                 }
                 #endregion
 

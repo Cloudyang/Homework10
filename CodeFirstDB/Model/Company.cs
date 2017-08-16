@@ -7,7 +7,7 @@ namespace CodeFirstDB
     using System.Data.Entity.Spatial;
 
     [Table("Company")]
-    public partial class Company
+    public partial class Company 
     {
         public int Id { get; set; }
 

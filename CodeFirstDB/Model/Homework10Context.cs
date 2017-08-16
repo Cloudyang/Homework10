@@ -10,6 +10,7 @@ namespace CodeFirstDB
         public Homework10Context()
             : base("name=Homework10Context")
         {
+            
         }
 
         public virtual DbSet<Company> Company { get; set; }
