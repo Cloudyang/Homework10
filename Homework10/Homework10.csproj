@@ -73,6 +73,10 @@
       <Project>{d6f25017-ba50-4b3a-993b-de7ff371312a}</Project>
       <Name>Common.ADOEF</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Interface.BaseModel\Interface.BaseModel.csproj">
+      <Project>{e98253b2-7471-427d-90f0-1cb0d5d1f57e}</Project>
+      <Name>Interface.BaseModel</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

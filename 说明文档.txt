@@ -1,0 +1,6 @@
+1  在上一次数据的基础上，执行company_user_menu_mapping.sql,增加4个表，
+   然后试试code first和DB first，做下基本的增删改查操作  详见Homework10 在Comanpy对象中增、删、改、查演示
+
+2  第一周作业中，增删改的sql生成,datareader到实体的转换，换成基于表达式目录树方式生成，然后缓存起来
+   (或者自己写个简单的增删改查代码) 通过DbContext相关操作实现 详见Common.ADOEF->EFDAL EFHelper.cs
+

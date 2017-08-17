@@ -9,6 +9,7 @@ using System.Reflection;
 using System.Data.Entity;
 using ExpressionDemo.DBExtend;
 using System.Data.Objects;
+using Common.ADOEF.EFDAL;
 
 namespace Homework10
 {
@@ -33,6 +34,16 @@ namespace Homework10
                     companySet.Add(company1);
                     homework10Context.SaveChanges();
 
+                    var company2 = new Company()
+                    {
+                        Name = "测试增加22",
+                        CreateTime = DateTime.Now,
+                        CreatorId = 2
+                    };
+                    EFHelper efHelper = new EFHelper(homework10Context);
+                    int iResult = efHelper.Add(company2);
+                    var i = 0;
+
                 }
                 #endregion
 
@@ -41,7 +52,10 @@ namespace Homework10
                     #region 修改方法1
                     {
                         var company1 = companySet.Find(1005);
-                        company1.Name = "演示修改方法1";
+                        if (company1 != null)
+                        {
+                            company1.Name = "演示修改方法1";
+                        }
                         homework10Context.SaveChanges();
                     }
                     #endregion
@@ -52,8 +66,9 @@ namespace Homework10
                             Name = "演示修改方法2",
                             CreateTime = DateTime.Now,
                             CreatorId = 1,
-                            Id = 1007
+                            Id = 3
                         };
+                        homework10Context.Set<Company>().Attach(company1);
                         homework10Context.Entry(company1).State = EntityState.Modified;
                         homework10Context.SaveChanges();
                     }
@@ -103,7 +118,7 @@ namespace Homework10
                             homework10Context.Set<Company>().Attach(company1);
                             homework10Context.Set<Company>().Remove(company1);
                         }
-                         homework10Context.SaveChanges();
+                        homework10Context.SaveChanges();
                     }
                     #endregion
 
@@ -112,8 +127,8 @@ namespace Homework10
                 #endregion
 
                 #region 查 在Comanpy对象中演示
-                var companys = companySet.Where(c => c.Id > 1000);
-                Show(companys);
+                //  var companys = companySet.Where(c => c.Id > 1000);
+                Show(companySet);
                 #endregion
             }
 

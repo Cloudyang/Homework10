@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Configuration;
-using Common.ADOEF.Model;
+using Interface.BaseModel;
 
 namespace Common.ADOEF.ADODAL
 {

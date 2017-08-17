@@ -5,9 +5,10 @@ namespace CodeFirstDB
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
+    using Interface.BaseModel;
 
     [Table("Company")]
-    public partial class Company 
+    public partial class Company
     {
         public int Id { get; set; }
 

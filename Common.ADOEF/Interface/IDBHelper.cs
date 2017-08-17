@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using Common.ADOEF.Model;
+using Interface.BaseModel;
 
 namespace Common.ADOEF.Interface
 {

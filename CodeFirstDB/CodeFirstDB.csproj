@@ -63,6 +63,12 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Interface.BaseModel\Interface.BaseModel.csproj">
+      <Project>{e98253b2-7471-427d-90f0-1cb0d5d1f57e}</Project>
+      <Name>Interface.BaseModel</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

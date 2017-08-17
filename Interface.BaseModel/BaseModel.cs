@@ -1,4 +1,4 @@
-﻿namespace Common.ADOEF.Model
+﻿namespace Interface.BaseModel
 { 
     public class BaseModel
     {
