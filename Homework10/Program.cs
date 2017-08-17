@@ -40,10 +40,6 @@ namespace Homework10
                         CreateTime = DateTime.Now,
                         CreatorId = 2
                     };
-                    EFHelper efHelper = new EFHelper(homework10Context);
-                    int iResult = efHelper.Add(company2);
-                    var i = 0;
-
                 }
                 #endregion
 

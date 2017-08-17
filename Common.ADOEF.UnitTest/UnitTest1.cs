@@ -16,7 +16,6 @@ namespace Common.ADOEF.UnitTest
         {
         }
 
-
         public UnitTest1()
         {
             var _DbContext =  new Homework10Context();
@@ -33,8 +32,28 @@ namespace Common.ADOEF.UnitTest
                 CreatorId = 2
             };
             var iResult = _EFHelper.Add(company2);
-            
             Assert.AreEqual(iResult, 1);
+        }
+
+        [TestMethod]
+        public void TestUpdate()
+        {
+            var company2 = new Company()
+            {
+                Name = "测试增加22fff22",
+                CreateTime = DateTime.Now,
+                CreatorId = 2,
+                Id=4
+            };
+            var iResult = _EFHelper.Update(company2);
+        //    Assert.AreEqual(iResult, 1);
+        }
+
+        [TestMethod]
+        public void TestDelete()
+        {
+            var iResult = _EFHelper.Delete<Company>(5);
+       //     Assert.AreEqual(iResult, 1);
         }
     }
 }
