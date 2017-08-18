@@ -22,6 +22,13 @@ namespace Homework10
 
                 homework10Context.Database.Log = c => Console.WriteLine(c);
 
+                #region 批量操作演示
+                EFHelper efHelper = new EFHelper(homework10Context);
+                efHelper.Update<Company>(new Company { Name = "yy", CreateTime = DateTime.Now, CreatorId = 1 },c=>c.Id==1);
+
+                efHelper.Delete<Company>(c => c.Id > 50 && c.Name.StartsWith("测试"));
+                #endregion
+
                 var companySet = homework10Context.Company;
                 #region  增 在Comanpy对象中演示
                 {
@@ -47,7 +54,7 @@ namespace Homework10
                 {
                     #region 修改方法1
                     {
-                        var company1 = companySet.Find(1005);
+                        var company1 = companySet.Find(2);
                         if (company1 != null)
                         {
                             company1.Name = "演示修改方法1";
@@ -71,7 +78,7 @@ namespace Homework10
                     #endregion
                     #region 修改方法3 
                     {
-                        var company1 = companySet.Where(c => c.Id == 2021).FirstOrDefault();
+                        var company1 = companySet.Where(c => c.Id == 2001).FirstOrDefault();
                         if (company1 != null)
                         {
                             company1.Name = "测试修改2023";
@@ -87,7 +94,7 @@ namespace Homework10
                 {
                     #region 删除方法1
                     {
-                        var company1 = companySet.Find(2023);
+                        var company1 = companySet.Find(4);
                         if (company1 != null)
                         {
                             companySet.Remove(company1);
@@ -97,7 +104,7 @@ namespace Homework10
                     #endregion
                     #region 删除方法2 
                     {
-                        var company1 = companySet.Where(c => c.Id == 2024).FirstOrDefault();
+                        var company1 = companySet.Where(c => c.Id == 5).FirstOrDefault();
                         if (company1 != null)
                         {
                             homework10Context.Entry(company1).State = EntityState.Deleted;
@@ -108,7 +115,7 @@ namespace Homework10
 
                     #region 删除方法3 
                     {
-                        var company1 = companySet.Where(c => c.Id == 2025).FirstOrDefault();
+                        var company1 = companySet.Where(c => c.Id == 6).FirstOrDefault();
                         if (company1 != null)
                         {
                             homework10Context.Set<Company>().Attach(company1);

@@ -8,6 +8,7 @@ using Common.ADOEF.Interface;
 using System.Linq.Expressions;
 using ExpressionDemo.Visitor;
 using System.Data;
+using System.Data.SqlClient;
 
 namespace Common.ADOEF.EFDAL
 {
@@ -29,10 +30,10 @@ namespace Common.ADOEF.EFDAL
             }
         }
 
-        public int Add<T>(T t) where T: class
+        public int Add<T>(T t) where T : class
         {
             _DbContext.Set<T>().Add(t);
-            return  _DbContext.SaveChanges();
+            return _DbContext.SaveChanges();
         }
 
         public int Delete<T>(int id) where T : class
@@ -46,7 +47,7 @@ namespace Common.ADOEF.EFDAL
             return _DbContext.SaveChanges();
         }
 
-        public IQueryable Query<T>(Expression<Func<T, bool>> predicate) where T:class
+        public IQueryable Query<T>(Expression<Func<T, bool>> predicate) where T : class
         {
             return _DbContext.Set<T>().Where(predicate);
         }
@@ -60,9 +61,37 @@ namespace Common.ADOEF.EFDAL
             return _DbContext.Database.ExecuteSqlCommand(sql);
         }
 
-        public int Update<T>(Expression<Func<T, bool>> predicate)
+        public int Update<T>(T entity, Expression<Func<T, bool>> predicate = null)
         {
-            return 0;
+            StringBuilder sqlBuider = new StringBuilder($"Update [{typeof(T).Name}] ");
+            /* 传统实现方式 
+            List<string> assignments = new List<string>();
+            foreach (var item in typeof(T).GetProperties())
+            {
+                assignments.Add(string.Format("[{0}]=@{0}",item.Name));
+            }
+            */
+            ///linq简易实现如下:
+            System.Reflection.PropertyInfo[] propertyInfo = typeof(T).GetProperties();
+            var assignments = propertyInfo.Where(o => !o.Name.ToLower().Equals("id"))
+                .Select(o => string.Format("[{0}]=@{0}", o.Name));
+            sqlBuider.AppendFormat("set {0}", string.Join(",", assignments));
+
+            if (predicate != null)
+            {
+                ConditionBuilderVisitor conditionVisitor = new ConditionBuilderVisitor();
+                conditionVisitor.Visit(predicate);
+                string condition = conditionVisitor.Condition();
+                sqlBuider.Append($" where {condition}");
+            }
+            string sql = sqlBuider.ToString();
+            var parameters = propertyInfo.Where(o => !o.Name.ToLower().Equals("id"))
+                .Select(o => new SqlParameter
+                {
+                    ParameterName = $"@{o.Name}",
+                    Value = o.GetValue(entity) ?? DBNull.Value
+                }).ToArray();
+            return _DbContext.Database.ExecuteSqlCommand(sql, parameters);
         }
 
 

@@ -42,15 +42,16 @@ namespace Common.ADOEF.ADODAL
 
             int iResult = 0;
             Type type = typeof(T);
-            string fieldList = string.Join(",", type.GetProperties()
+            System.Reflection.PropertyInfo[] propertyInfo = type.GetProperties();
+            string fieldList = string.Join(",", propertyInfo
                                                     .Where(p => !p.Name.Equals("Id"))
                                                     .Select(p => string.Format("[{0}]", p.Name)));
             //更新代码：将valueList 替换参数型 parameterList
-            string parameterList = string.Join(",", type.GetProperties()
+            string parameterList = string.Join(",", propertyInfo
                                                     .Where(p => !p.Name.Equals("Id"))
                                                     .Select(p => string.Format("@{0}", p.Name)));
             //新增代码：带参数部分
-            var pvList = type.GetProperties()
+            var pvList = propertyInfo
                              .Where(p => !p.Name.Equals("Id"))
                              .Select(p => new SqlParameter
                              {

@@ -52,6 +52,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Migrations\201708170806304_InitialCreate.cs" />
+    <Compile Include="Migrations\201708170806304_InitialCreate.Designer.cs">
+      <DependentUpon>201708170806304_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708180025199_AddCompany.cs" />
+    <Compile Include="Migrations\201708180025199_AddCompany.Designer.cs">
+      <DependentUpon>201708180025199_AddCompany.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Company.cs" />
     <Compile Include="Model\Homework10Context.cs" />
     <Compile Include="Model\Menu.cs" />
@@ -68,6 +77,14 @@
       <Project>{e98253b2-7471-427d-90f0-1cb0d5d1f57e}</Project>
       <Name>Interface.BaseModel</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201708170806304_InitialCreate.resx">
+      <DependentUpon>201708170806304_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708180025199_AddCompany.resx">
+      <DependentUpon>201708180025199_AddCompany.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
